@@ -1,5 +1,5 @@
-from src.data_loader import DataLoader
-from src.data_validator import DataValidator
+from data_loader import DataLoader
+from data_validator import DataValidator
 
 
 def process_data(file_path, required_columns, column_types):
