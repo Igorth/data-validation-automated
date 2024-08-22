@@ -30,12 +30,17 @@ jobs:
         run: |
           pytest tests/test_data_loader.py
           pytest tests/test_data_validator.py
-          pytest tests/test_report_generator.py
+          pytest tests/test_report_generator.py      
 
       - name: Generate Report
         run: |
           mkdir -p reports
           python src/data_processing_workflow.py
+          sleep 10
+
+      - name: List Report Directory
+        run: |
+          ls -la reports
 
       - name: Upload Report
         uses: actions/upload-artifact@v4
