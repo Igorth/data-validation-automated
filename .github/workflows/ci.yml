@@ -28,9 +28,9 @@ jobs:
 
       - name: Run tests
         run: |
-          pytest src/test_data_loader.py
-          pytest src/test_data_validator.py
-          pytest src/test_report_generator.py
+          pytest tests/test_data_loader.py
+          pytest tests/test_data_validator.py
+          pytest tests/test_report_generator.py
 
       - name: Generate Report
         run: |
