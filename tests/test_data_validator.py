@@ -1,27 +1,43 @@
 import pytest
-from src.data_loader import DataLoader
 from src.data_validator import DataValidator
 
-# Load data from the CSV file
-data = DataLoader().load_data('../data/sample_data.csv')
+# Sample data for testing purposes
+valid_data = [
+    {"id": "1", "name": "John Doe", "age": "28", "department": "Engineering"},
+    {"id": "2", "name": "Jane Smith", "age": "34", "department": "Marketing"},
+]
+
+missing_column_data = [
+    {"id": "1", "name": "John Doe", "age": "28"},
+    {"id": "2", "name": "Jane Smith", "age": "34"},
+]
+
+invalid_type_data = [
+    {"id": "1", "name": "John Doe", "age": "twenty-eight", "department": "Engineering"},
+    {"id": "2", "name": "Jane Smith", "age": "thirty-four", "department": "Marketing"},
+]
+
+missing_value_data = [
+    {"id": "1", "name": "John Doe", "age": "", "department": "Engineering"},
+    {"id": "2", "name": "Jane Smith", "age": "34", "department": None},
+]
 
 
 def test_validate_columns():
-    # Validate required columns
     required_columns = ['id', 'name', 'age', 'department']
-    columns_valid = DataValidator.validate_columns(data, required_columns)
-    print(f"Columns valid: {columns_valid}")
+    assert DataValidator.validate_columns(valid_data, required_columns) is True
+    assert DataValidator.validate_columns(missing_column_data, required_columns) is False
 
 
 def test_validate_data_types():
     column_types = {'id': int, 'name': str, 'age': int, 'department': str}
-    types_valid = DataValidator.validate_data_types(data, column_types)
-    print(f"Data types valid: {types_valid}")
+    assert DataValidator.validate_data_types(valid_data, column_types) is True
+    assert DataValidator.validate_data_types(invalid_type_data, column_types) is False
 
 
 def test_check_missing_values():
-    missing_values = DataValidator.check_missing_values(data)
-    print(f"Missing values: {missing_values}")
+    assert DataValidator.check_missing_values(valid_data) is True
+    assert DataValidator.check_missing_values(missing_value_data) is False
 
 
 if __name__ == '__main__':
