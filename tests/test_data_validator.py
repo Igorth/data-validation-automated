@@ -19,5 +19,10 @@ def test_validate_data_types():
     print(f"Data types valid: {types_valid}")
 
 
+def test_check_missing_values():
+    missing_values = DataValidator.check_missing_values(data)
+    print(f"Missing values: {missing_values}")
+
+
 if __name__ == '__main__':
     pytest.main()

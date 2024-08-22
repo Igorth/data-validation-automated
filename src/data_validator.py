@@ -28,3 +28,15 @@ class DataValidator:
                     except ValueError:
                         return False
         return True
+
+    @staticmethod
+    def check_missing_values(data):
+        """
+        Check for missing values in the data.
+        :param data: List of dictionaries representing the data
+        :return: Boolean indicating whether any missing values are found
+        """
+        for row in data:
+            if any(value == '' or value is None for value in row.values()):
+                return False
+        return True
