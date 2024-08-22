@@ -35,7 +35,8 @@ jobs:
       - name: Generate Report
         run: |
           mkdir -p reports
-          python src/data_processing_workflow.py
+          cd src
+          python data_processing_workflow.py
           sleep 10
 
       - name: List Report Directory

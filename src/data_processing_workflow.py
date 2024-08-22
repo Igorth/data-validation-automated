@@ -52,17 +52,17 @@ if __name__ == "__main__":
         print("Data processing completed successfully.")
 
         # Generate and save the summary report
-        print("Generating summary report...")
+        print("\nGenerating summary report...")
         report = ReportGenerator.generate_summary_report(valid_data)
         report_path = "../reports/summary_report.txt"
         ReportGenerator.save_report(report, report_path)
         print(f"Summary report saved as {report_path}")
 
         # Generate and save the CSV report
-        print(f"Generating CSV report...")
+        print(f"\nGenerating CSV report...")
         csv_report_path = "../reports/processed_data_report.csv"
         ReportGenerator.generate_csv_report(valid_data, csv_report_path)
-        print(f"CSV report saved as {csv_report_path}")
+        print(f"CSV report saved as {csv_report_path}\n")
 
     else:
         print("Data processing failed due to validation errors.")
