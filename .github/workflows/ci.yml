@@ -34,8 +34,8 @@ jobs:
 
       - name: Generate Report
         run: |
-          python src/data_processing_workflow.py
-          python src/report_generator.py
+          PYTHONPATH=src python data_processing_workflow.py
+          PYTHONPATH=src python report_generator.py
 
       - name: Upload Report
         uses: actions/upload-artifact@v3
