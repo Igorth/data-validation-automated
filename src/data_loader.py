@@ -10,10 +10,17 @@ class DataLoader:
         :param file_path: Path to the CSV file
         :return: List of dictionaries representing the rows in the CSV.
         """
-        with open(file_path, 'r') as file:
-            reader = csv.DictReader(file)
-            data = list(reader)
-        return data
+        try:
+            with open(file_path, 'r') as file:
+                reader = csv.DictReader(file)
+                data = list(reader)
+            return data
+        except FileNotFoundError:
+            print(f"Error: The file at {file_path} does not exist.")
+            return []
+        except Exception as err:
+            print(f"An error occurred while loading the data: {err}")
+            return []
 
     @classmethod
     def shallow_copy(cls, data):
