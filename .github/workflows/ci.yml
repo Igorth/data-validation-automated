@@ -34,12 +34,10 @@ jobs:
 
       - name: Generate Report
         run: |
-          cd src
-          python data_processing_workflow.py
-          python report_generator.py
+          python src/data_processing_workflow.py
 
       - name: Upload Report
         uses: actions/upload-artifact@v3
         with:
           name: generated-reports
-          path: ../reports/
+          path: reports

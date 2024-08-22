@@ -1,5 +1,6 @@
 from data_loader import DataLoader
 from data_validator import DataValidator
+from report_generator import ReportGenerator
 
 
 def process_data(file_path, required_columns, column_types):
@@ -49,5 +50,19 @@ if __name__ == "__main__":
     valid_data = process_data(file_path, required_columns, column_types)
     if valid_data:
         print("Data processing completed successfully.")
+
+        # Generate and save the summary report
+        print("Generating summary report...")
+        report = ReportGenerator.generate_summary_report(valid_data)
+        report_path = "../reports/summary_report.txt"
+        ReportGenerator.save_report(report, report_path)
+        print(f"Summary report saved as {report_path}")
+
+        # Generate and save the CSV report
+        print(f"Generating CSV report...")
+        csv_report_path = "../reports/processed_data_report.csv"
+        ReportGenerator.generate_csv_report(valid_data, csv_report_path)
+        print(f"CSV report saved as {csv_report_path}")
+
     else:
         print("Data processing failed due to validation errors.")
