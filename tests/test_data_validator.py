@@ -13,5 +13,11 @@ def test_validate_columns():
     print(f"Columns valid: {columns_valid}")
 
 
+def test_validate_data_types():
+    column_types = {'id': int, 'name': str, 'age': int, 'department': str}
+    types_valid = DataValidator.validate_data_types(data, column_types)
+    print(f"Data types valid: {types_valid}")
+
+
 if __name__ == '__main__':
     pytest.main()
