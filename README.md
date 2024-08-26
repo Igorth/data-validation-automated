@@ -1,5 +1,8 @@
 # Automated Data Validation Tool
 
+![Python](https://img.shields.io/badge/Python-3.8%2B-blue.svg)
+![CI/CD](https://img.shields.io/badge/CI%2FCD-GitHub%20Actions-yellow.svg)
+
 ## Overview
 
 This project is an Automated Data Validation Tool that processes and validates data from CSV files. It generates summary and CSV reports based on the validation results. The tool consists of several modules and integrates with a CI/CD pipeline to automate testing and report generation.
